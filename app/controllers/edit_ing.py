@@ -1,12 +1,12 @@
 import utils.corefiles as core
 import utils.screen as screen
 import main as main
-from data.config import chefs
+from data.config import hamburguesa
 
 
 def edit_menu():
     screen.limpiar_pantalla()
-    ingredientes_data = core.readDataFile(chefs)
+    ingredientes_data = core.readDataFile(hamburguesa)
     global key_ing
     
     print('Que ingrediente deseas editar?')
@@ -50,13 +50,13 @@ def edit_precio():
 
     global key_ing
 
-    ingredientes_data = core.readDataFile(chefs)
+    ingredientes_data = core.readDataFile(hamburguesa)
 
     precio = input("Ingrese el nuevo precio del ingrediente: ")
 
     ingredientes_data[key_ing]['precio'] = precio
     
-    core.writeDataFile(chefs, ingredientes_data)
+    core.writeDataFile(hamburguesa, ingredientes_data)
     
     print(f"Precio actualizado a {precio}'!")
     screen.pausar()
@@ -64,7 +64,7 @@ def edit_precio():
 
 def edit_stock():
     global key_ing
-    ingredientes_data = core.readDataFile(chefs)
+    ingredientes_data = core.readDataFile(hamburguesa)
 
     while True:
         try:
@@ -73,7 +73,7 @@ def edit_stock():
 
                 ingredientes_data[key_ing]['stock'] = stock
 
-                core.writeDataFile(chefs, ingredientes_data)
+                core.writeDataFile(hamburguesa, ingredientes_data)
 
                 print(f"Stock actualizado")
                 screen.pausar()
@@ -83,7 +83,7 @@ def edit_stock():
                 print('Stock actualizado a 0. Debido a que no hay mas existencias el ingrediente sera borrado')
                 del ingredientes_data[key_ing]
 
-                core.writeDataFile(chefs, ingredientes_data)
+                core.writeDataFile(hamburguesa, ingredientes_data)
                 screen.pausar()
                 break
         except ValueError:

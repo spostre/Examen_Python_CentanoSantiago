@@ -1,0 +1,18 @@
+{
+    "C001": {
+        "nombre": "Clasica",
+        "categoria": "Clasica",
+        "ingredientes": [
+            "Pan",
+            "Carne de res",
+            "Queso cheddar",
+            "Lechuga",
+            "Tomate",
+            "Cebolla",
+            "Mayonesa",
+            "Ketchup"
+        ],
+        "precio": 10,
+        "chef": "C001"
+    }
+}

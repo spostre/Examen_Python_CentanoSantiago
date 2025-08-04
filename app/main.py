@@ -1,5 +1,7 @@
 import utils.screen as screen
 from controllers import ingredients as ing
+from controllers import chef as chef
+from controllers import hamburgesas as ham
 
 
 def main():
@@ -9,9 +11,9 @@ def main():
         if (opcion == 1):
             ing.menu_ing()
         elif (opcion == 2):
-            pass
+            chef.menu_chef()
         elif (opcion == 3):
-            pass
+            ham.add_ham()
         elif (opcion == 4):
             pass
         elif (opcion == 5):
@@ -32,12 +34,13 @@ def menu():
     print('Hamburgueseria')
 
     print('1. Gestionar ingredientes')
-    print('2. ')
+    print('2. Gestionar chefs')
+    print('3. Crear hamburguesa')
     
     while True:
         try:
             opcion = int(input("\nSeleccione una opción: "))
-            if (0 <= opcion <= 8):
+            if (0 <= opcion <= 3):
                 return opcion
             else:
                 print('saliendo')

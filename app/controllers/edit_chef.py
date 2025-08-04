@@ -1,12 +1,12 @@
 import utils.corefiles as core
 import utils.screen as screen
 import main as main
-from data.config import chefs
+from data.config import hamburguesa
 
 
 def edit_menu():
     screen.limpiar_pantalla()
-    chefs_data = core.readDataFile(chefs)
+    chefs_data = core.readDataFile(hamburguesa)
     global key_chef
     
     print('Que chef deseas editar?')
@@ -47,73 +47,50 @@ def edit_menu():
             print("Entrada no válida. Por favor, ingrese un número o el título del libro.")
 
 def edit_nombre():
+    screen.limpiar_pantalla()
 
     global key_chef
 
-    chefs_data = core.readDataFile(chefs)
+    chefs_data = core.readDataFile(hamburguesa)
 
     chef = input("Ingrese el nuevo nombre del ingrediente: ")
 
     chefs_data[key_chef]['precio'] = chef
     
-    core.writeDataFile(chefs, chefs_data)
+    core.writeDataFile(hamburguesa, chefs_data)
     
     print(f"Precio actualizado a {chef}'!")
     screen.pausar()
     main.main()
 
 def edit_esp():
+    screen.limpiar_pantalla()
+
     global key_chef
-    ingredientes_data = core.readDataFile(chefs)
+    chefs_data = core.readDataFile(hamburguesa)
 
-    while True:
-        try:
-            stock = int(input("Ingrese el nuevo stock (si el stock es de 0 sera eliminado: )"))
-            if (stock > 0):
-
-                ingredientes_data[key_chef]['stock'] = stock
-
-                core.writeDataFile(chefs, ingredientes_data)
-
-                print(f"Stock actualizado")
-                screen.pausar()
-                main.main()
-            elif (stock == 0):
-
-                print('Stock actualizado a 0. Debido a que no hay mas existencias el ingrediente sera borrado')
-                del ingredientes_data[key_chef]
-
-                core.writeDataFile(chefs, ingredientes_data)
-                screen.pausar()
-                break
-        except ValueError:
-            print("Entrada no válida. Ingrese un número entero.")
-    
-
-def edit_libro_genero():
-    global key_libro
-    libros_data = core.readDataFile(libros)
-
-    print("Ingrese el género del libro:\n1. Fantasía\n2. Ciencia\n3. Romance\n4. Misterio\n5. Accion ")
-    genero = int(input('Seleccione una opcion: '))
-    if (genero == 1):
-        genero = 'Fantasia'
-    elif (genero == 2):
-        genero = 'Ciencia'
-    elif (genero == 3):
-        genero = 'Romance'
-    elif (genero == 4):
-        genero = 'Misterio'
-    elif (genero == 5):
-        genero = 'Acción'
+    print("Ingrese la especialidad del chef:\n1. carnes\n2. cocina vegetariana\n3. gourmet\n4. fritos\n5. postres ")
+    especialisacion = int(input('Seleccione una opcion: '))
+    if (especialisacion == 1):
+        especialisacion = 'carnes'
+    elif (especialisacion == 2):
+        especialisacion = 'cocina vegetariana'
+    elif (especialisacion == 3):
+        especialisacion = 'gourmet'
+    elif (especialisacion == 4):
+        especialisacion = 'fritos'
+    elif (especialisacion == 5):
+        especialisacion = 'postres'
     else:
         print("Opción no válida. Intente de nuevo.")
-        screen.pausar_pantalla()
-        edit_libro_genero()
+        screen.pausar()
+        edit_esp()
 
-    libros_data[key_libro]['genero'] = genero
-    core.writeDataFile(libros, libros_data)
+    chefs_data[key_chef]['especialisacion'] = especialisacion
+    core.writeDataFile(hamburguesa, chefs_data)
 
-    print(f"¡Género del libro con ID '{key_libro}' actualizado!")
-    screen.pausar_pantalla()
+    print(f"Especialidad del chef actualizada")
+    screen.pausar()
     main.main()
+    
+

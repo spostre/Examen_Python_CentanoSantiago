@@ -1,7 +1,7 @@
 import utils.corefiles as core
 import utils.screen as screen
 import main as main
-from data.config import chefs
+from data.config import hamburguesa
 from controllers import edit_ing as editI
 
 
@@ -32,7 +32,7 @@ def menu_ing():
 
 def add_ing():
     screen.limpiar_pantalla()
-    ingredientes_data = core.readDataFile(chefs)
+    ingredientes_data = core.readDataFile(hamburguesa)
 
     print('Que ingrediente desea añadir?')
     print('1. Pan')
@@ -100,7 +100,7 @@ def add_ing():
 
         ingredientes_data[id_ing] = ingrediente
 
-        core.writeDataFile(chefs, ingredientes_data)
+        core.writeDataFile(hamburguesa, ingredientes_data)
 
     print('Ingrediente añadido con exito')
 
@@ -109,7 +109,7 @@ def add_ing():
 
 def list_ing():
     screen.limpiar_pantalla()
-    ingredientes_data = core.readDataFile(chefs)
+    ingredientes_data = core.readDataFile(hamburguesa)
 
     for ing in ingredientes_data.values():
 

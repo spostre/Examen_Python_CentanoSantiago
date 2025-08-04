@@ -1,7 +1,7 @@
 import utils.corefiles as core
 import utils.screen as screen
 import main as main
-from data.config import chefs
+from data.config import hamburguesa
 from controllers import edit_chef as editC
 
 
@@ -32,7 +32,7 @@ def menu_chef():
 
 def add_chef():
     screen.limpiar_pantalla()
-    chefs_data = core.readDataFile(chefs)
+    chefs_data = core.readDataFile(hamburguesa)
 
     print('Que especialidad tiene el chef?')
     print('1. Carnes')
@@ -48,19 +48,19 @@ def add_chef():
             op = int(input('opcion : '))
 
             if (op == 1):
-                nombre = input('Ingrese el nombre del chef')
+                nombre = input('Ingrese el nombre del chef: ')
                 especialidad = "carnes"
 
                 rep = False
 
             elif (op == 2):
-                nombre = input('Ingrese el nombre del chef')
+                nombre = input('Ingrese el nombre del chef: ')
                 especialidad = "cocina vegetariana"
                 
                 rep = False
 
             elif (op == 3):
-                nombre = input('Ingrese el nombre del chef')
+                nombre = input('Ingrese el nombre del chef: ')
                 especialidad = "gourmet"
                 
                 rep = False
@@ -73,7 +73,7 @@ def add_chef():
             screen.pausar()
             continue
 
-    id_chef = f"I{len(chefs_data) + 1:03d}"
+    id_chef = f"C{len(chefs_data) + 1:03d}"
 
     
 
@@ -92,7 +92,7 @@ def add_chef():
 
         chefs_data[id_chef] = chef
 
-        core.writeDataFile(chefs, chefs_data)
+        core.writeDataFile(hamburguesa, chefs_data)
 
     print('Chef registrado con exito')
 
@@ -101,7 +101,7 @@ def add_chef():
 
 def list_chef():
     screen.limpiar_pantalla()
-    chef_data = core.readDataFile(chefs)
+    chef_data = core.readDataFile(hamburguesa)
 
     for chef in chef_data.values():
 
