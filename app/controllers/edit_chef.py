@@ -90,3 +90,30 @@ def edit_esp():
             print("Entrada no válida. Ingrese un número entero.")
     
 
+def edit_libro_genero():
+    global key_libro
+    libros_data = core.readDataFile(libros)
+
+    print("Ingrese el género del libro:\n1. Fantasía\n2. Ciencia\n3. Romance\n4. Misterio\n5. Accion ")
+    genero = int(input('Seleccione una opcion: '))
+    if (genero == 1):
+        genero = 'Fantasia'
+    elif (genero == 2):
+        genero = 'Ciencia'
+    elif (genero == 3):
+        genero = 'Romance'
+    elif (genero == 4):
+        genero = 'Misterio'
+    elif (genero == 5):
+        genero = 'Acción'
+    else:
+        print("Opción no válida. Intente de nuevo.")
+        screen.pausar_pantalla()
+        edit_libro_genero()
+
+    libros_data[key_libro]['genero'] = genero
+    core.writeDataFile(libros, libros_data)
+
+    print(f"¡Género del libro con ID '{key_libro}' actualizado!")
+    screen.pausar_pantalla()
+    main.main()
