@@ -1,0 +1,14 @@
+{
+    "I002": {
+        "nombre": "carne de res",
+        "descripcion": "carne de res jugosa y sabrosa",
+        "precio": 8,
+        "stock": 1000
+    },
+    "I003": {
+        "nombre": "queso",
+        "descripcion": "queso cheddar derretido",
+        "precio": 1.5,
+        "stock": 200
+    }
+}
